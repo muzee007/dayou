@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大有电厂管理平台 - 演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon.overview {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .feature-icon.operation {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .feature-icon.market {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .feature-icon.data {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .feature-icon.admin {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #374151;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .demo-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-item:hover {
+            background: #e2e8f0;
+            transform: translateY(-5px);
+        }
+
+        .demo-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-item p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-stack {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ 大有电厂管理平台</h1>
+            <p>现代化电厂管理解决方案，提供全方位的监控、控制和分析功能</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon overview">📊</div>
+                <h3>全景概览</h3>
+                <p>实时监控电厂运行状态和关键指标</p>
+                <ul class="feature-list">
+                    <li>实时功率监控</li>
+                    <li>运行效率分析</li>
+                    <li>设备状态显示</li>
+                    <li>趋势图表展示</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon operation">⚙️</div>
+                <h3>运行管理</h3>
+                <p>机组运行参数监控与调节</p>
+                <ul class="feature-list">
+                    <li>机组启停控制</li>
+                    <li>参数实时调节</li>
+                    <li>设备状态监控</li>
+                    <li>操作日志记录</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon market">📈</div>
+                <h3>电力市场</h3>
+                <p>电力交易与市场分析</p>
+                <ul class="feature-list">
+                    <li>实时电价显示</li>
+                    <li>交易量统计</li>
+                    <li>市场份额分析</li>
+                    <li>市场趋势预测</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon data">📋</div>
+                <h3>数据台账</h3>
+                <p>历史数据查询与报表管理</p>
+                <ul class="feature-list">
+                    <li>历史数据查询</li>
+                    <li>多维度分析</li>
+                    <li>Excel/PDF导出</li>
+                    <li>自定义时间范围</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon admin">👥</div>
+                <h3>系统管理</h3>
+                <p>用户管理与系统配置</p>
+                <ul class="feature-list">
+                    <li>用户权限管理</li>
+                    <li>角色分配</li>
+                    <li>系统配置</li>
+                    <li>操作日志查看</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎯 核心功能演示</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>实时监控</h4>
+                    <p>24/7实时监控电厂运行状态，及时发现异常情况</p>
+                </div>
+                <div class="demo-item">
+                    <h4>智能控制</h4>
+                    <p>一键控制机组启停，智能调节运行参数</p>
+                </div>
+                <div class="demo-item">
+                    <h4>数据分析</h4>
+                    <p>深度分析运行数据，优化生产效率</p>
+                </div>
+                <div class="demo-item">
+                    <h4>市场洞察</h4>
+                    <p>实时掌握市场动态，制定最优策略</p>
+                </div>
+                <div class="demo-item">
+                    <h4>报表导出</h4>
+                    <p>灵活的数据导出功能，支持多种格式</p>
+                </div>
+                <div class="demo-item">
+                    <h4>权限管理</h4>
+                    <p>细粒度的权限控制，确保系统安全</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🛠️ 技术架构</h2>
+            <div class="tech-stack">
+                <div class="tech-item">HTML5</div>
+                <div class="tech-item">CSS3</div>
+                <div class="tech-item">JavaScript ES6+</div>
+                <div class="tech-item">Python</div>
+                <div class="tech-item">Flask</div>
+                <div class="tech-item">SQLite</div>
+            </div>
+            <p style="text-align: center; color: #64748b; margin-top: 1rem;">
+                采用现代化的前后端分离架构，确保系统的可扩展性和维护性
+            </p>
+        </div>
+
+        <div class="cta-section">
+            <a href="frontend/index.html" class="btn">🚀 立即体验</a>
+            <a href="README.md" class="btn btn-secondary">📖 查看文档</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 大有电厂管理平台 | 现代化电厂管理解决方案</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动动画
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // 观察所有卡片
+            document.querySelectorAll('.feature-card, .demo-item').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+
+            // 添加鼠标悬停效果
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

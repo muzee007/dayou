@@ -1,0 +1,15 @@
+启动大有电厂管理平台后端服务...
+API文档:
+  - 概览数据: GET /api/overview
+  - 功率曲线: GET /api/chart/power
+  - 运行参数: GET /api/operation/parameters
+  - 市场数据: GET /api/market/data
+  - 用户管理: GET /api/admin/users
+  - 系统状态: GET /api/system/status
+  - 健康检查: GET /api/health
+
+服务地址: http://localhost:5001
+ * Serving Flask app 'app'
+ * Debug mode: on
+Address already in use
+Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.

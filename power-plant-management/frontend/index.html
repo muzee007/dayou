@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大有电厂管理平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边导航栏 -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-bolt"></i>
+                    <span>大有电厂</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="overview">
+                    <a href="#overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>全景概览</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="operation">
+                    <a href="#operation">
+                        <i class="fas fa-cogs"></i>
+                        <span>运行管理</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="market">
+                    <a href="#market">
+                        <i class="fas fa-chart-line"></i>
+                        <span>电力市场</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="data">
+                    <a href="#data">
+                        <i class="fas fa-database"></i>
+                        <span>数据台账</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="admin">
+                    <a href="#admin">
+                        <i class="fas fa-user-shield"></i>
+                        <span>系统管理</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="username">管理员</span>
+                        <span class="role">系统管理员</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <!-- 顶部工具栏 -->
+            <header class="top-bar">
+                <div class="breadcrumb">
+                    <span id="current-page">全景概览</span>
+                </div>
+                <div class="top-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="搜索...">
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="settings">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 页面内容区域 -->
+            <div class="content-area">
+                <!-- 全景概览页面 -->
+                <div id="overview-page" class="page active">
+                    <div class="page-header">
+                        <h1>全景概览</h1>
+                        <p>实时监控电厂运行状态和关键指标</p>
+                    </div>
+                    
+                    <!-- 关键指标卡片 -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon power">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>当前功率</h3>
+                                <div class="metric-value">1,250</div>
+                                <div class="metric-unit">MW</div>
+                                <div class="metric-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+2.3%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-icon efficiency">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>运行效率</h3>
+                                <div class="metric-value">94.2</div>
+                                <div class="metric-unit">%</div>
+                                <div class="metric-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+0.8%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-icon temperature">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>主蒸汽温度</h3>
+                                <div class="metric-value">540</div>
+                                <div class="metric-unit">°C</div>
+                                <div class="metric-trend neutral">
+                                    <i class="fas fa-minus"></i>
+                                    <span>0.0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-icon pressure">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>主蒸汽压力</h3>
+                                <div class="metric-value">16.8</div>
+                                <div class="metric-unit">MPa</div>
+                                <div class="metric-trend negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>-0.5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 图表区域 -->
+                    <div class="charts-section">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>功率曲线</h3>
+                                <div class="chart-controls">
+                                    <button class="btn-time active" data-time="24h">24小时</button>
+                                    <button class="btn-time" data-time="7d">7天</button>
+                                    <button class="btn-time" data-time="30d">30天</button>
+                                </div>
+                            </div>
+                            <div class="chart" id="power-chart">
+                                <!-- 图表将通过JavaScript渲染 -->
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>设备状态</h3>
+                            </div>
+                            <div class="equipment-status">
+                                <div class="equipment-item online">
+                                    <div class="equipment-icon">
+                                        <i class="fas fa-cog"></i>
+                                    </div>
+                                    <div class="equipment-info">
+                                        <span class="equipment-name">1号机组</span>
+                                        <span class="equipment-status-text">正常运行</span>
+                                    </div>
+                                </div>
+                                <div class="equipment-item online">
+                                    <div class="equipment-icon">
+                                        <i class="fas fa-cog"></i>
+                                    </div>
+                                    <div class="equipment-info">
+                                        <span class="equipment-name">2号机组</span>
+                                        <span class="equipment-status-text">正常运行</span>
+                                    </div>
+                                </div>
+                                <div class="equipment-item maintenance">
+                                    <div class="equipment-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="equipment-info">
+                                        <span class="equipment-name">3号机组</span>
+                                        <span class="equipment-status-text">维护中</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 运行管理页面 -->
+                <div id="operation-page" class="page">
+                    <div class="page-header">
+                        <h1>运行管理</h1>
+                        <p>机组运行参数监控与调节</p>
+                    </div>
+                    
+                    <div class="operation-grid">
+                        <div class="operation-panel">
+                            <h3>机组控制</h3>
+                            <div class="control-buttons">
+                                <button class="btn-control start">启动</button>
+                                <button class="btn-control stop">停止</button>
+                                <button class="btn-control emergency">紧急停机</button>
+                            </div>
+                        </div>
+                        
+                        <div class="operation-panel">
+                            <h3>参数调节</h3>
+                            <div class="parameter-controls">
+                                <div class="parameter-item">
+                                    <label>功率设定 (MW)</label>
+                                    <input type="number" value="1250" min="0" max="1500">
+                                </div>
+                                <div class="parameter-item">
+                                    <label>温度设定 (°C)</label>
+                                    <input type="number" value="540" min="500" max="560">
+                                </div>
+                                <div class="parameter-item">
+                                    <label>压力设定 (MPa)</label>
+                                    <input type="number" value="16.8" min="15" max="18" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 电力市场页面 -->
+                <div id="market-page" class="page">
+                    <div class="page-header">
+                        <h1>电力市场</h1>
+                        <p>电力交易与市场分析</p>
+                    </div>
+                    
+                    <div class="market-dashboard">
+                        <div class="market-card">
+                            <h3>实时电价</h3>
+                            <div class="price-display">
+                                <span class="price">¥0.85</span>
+                                <span class="price-unit">/kWh</span>
+                            </div>
+                            <div class="price-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+0.12</span>
+                            </div>
+                        </div>
+                        
+                        <div class="market-card">
+                            <h3>今日交易量</h3>
+                            <div class="volume-display">
+                                <span class="volume">28,500</span>
+                                <span class="volume-unit">MWh</span>
+                            </div>
+                        </div>
+                        
+                        <div class="market-card">
+                            <h3>市场份额</h3>
+                            <div class="market-share">
+                                <div class="share-circle">
+                                    <span class="share-percentage">15.2%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据台账页面 -->
+                <div id="data-page" class="page">
+                    <div class="page-header">
+                        <h1>数据台账</h1>
+                        <p>历史数据查询与报表管理</p>
+                    </div>
+                    
+                    <div class="data-controls">
+                        <div class="date-range">
+                            <input type="date" id="start-date">
+                            <span>至</span>
+                            <input type="date" id="end-date">
+                            <button class="btn-primary">查询</button>
+                        </div>
+                        
+                        <div class="export-actions">
+                            <button class="btn-secondary">
+                                <i class="fas fa-download"></i>
+                                导出Excel
+                            </button>
+                            <button class="btn-secondary">
+                                <i class="fas fa-file-pdf"></i>
+                                导出PDF
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>功率 (MW)</th>
+                                    <th>效率 (%)</th>
+                                    <th>温度 (°C)</th>
+                                    <th>压力 (MPa)</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-table-body">
+                                <!-- 数据将通过JavaScript动态加载 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 系统管理页面 -->
+                <div id="admin-page" class="page">
+                    <div class="page-header">
+                        <h1>系统管理</h1>
+                        <p>用户管理与系统配置</p>
+                    </div>
+                    
+                    <div class="admin-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="users">用户管理</button>
+                            <button class="tab-btn" data-tab="roles">角色权限</button>
+                            <button class="tab-btn" data-tab="system">系统配置</button>
+                            <button class="tab-btn" data-tab="logs">系统日志</button>
+                            <button class="tab-btn" data-tab="equipment">设备管理</button>
+                            <button class="tab-btn" data-tab="operation-data">运行参数管理</button>
+                            <button class="tab-btn" data-tab="market-data">市场数据管理</button>
+                            <button class="tab-btn" data-tab="announcement">公告管理</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div id="users-tab" class="tab-panel active">
+                                <div class="user-management">
+                                    <div class="user-actions">
+                                        <button class="btn-primary">
+                                            <i class="fas fa-plus"></i>
+                                            添加用户
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="user-list">
+                                        <div class="user-item">
+                                            <div class="user-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="user-info">
+                                                <span class="user-name">张三</span>
+                                                <span class="user-role">操作员</span>
+                                            </div>
+                                            <div class="user-actions">
+                                                <button class="btn-icon">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn-icon">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="user-item">
+                                            <div class="user-avatar">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="user-info">
+                                                <span class="user-name">李四</span>
+                                                <span class="user-role">工程师</span>
+                                            </div>
+                                            <div class="user-actions">
+                                                <button class="btn-icon">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn-icon">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="equipment-tab" class="tab-panel">
+                                <div class="equipment-actions">
+                                    <button class="btn-primary" id="add-equipment-btn">
+                                        <i class="fas fa-plus"></i> 添加设备
+                                    </button>
+                                </div>
+                                <div class="equipment-list" id="equipment-list">
+                                    <!-- 设备列表通过JS动态渲染 -->
+                                </div>
+                            </div>
+                            <div id="operation-data-tab" class="tab-panel">
+                                <div class="operation-data-actions">
+                                    <button class="btn-primary" id="add-operation-data-btn">
+                                        <i class="fas fa-plus"></i> 添加参数
+                                    </button>
+                                </div>
+                                <div class="operation-data-list" id="operation-data-list">
+                                    <!-- 运行参数列表通过JS动态渲染 -->
+                                </div>
+                            </div>
+                            <div id="market-data-tab" class="tab-panel">
+                                <div class="market-data-actions">
+                                    <button class="btn-primary" id="add-market-data-btn">
+                                        <i class="fas fa-plus"></i> 添加市场数据
+                                    </button>
+                                </div>
+                                <div class="market-data-list" id="market-data-list">
+                                    <!-- 市场数据列表通过JS动态渲染 -->
+                                </div>
+                            </div>
+                            <div id="announcement-tab" class="tab-panel">
+                                <div class="announcement-actions">
+                                    <button class="btn-primary" id="add-announcement-btn">
+                                        <i class="fas fa-plus"></i> 添加公告
+                                    </button>
+                                </div>
+                                <div class="announcement-list" id="announcement-list">
+                                    <!-- 公告列表通过JS动态渲染 -->
+                                </div>
+                            </div>
+                            <div id="system-tab" class="tab-panel">
+                                <div class="system-settings-form" style="max-width:400px;margin:2rem auto;">
+                                    <div style="margin-bottom:1.5rem;">
+                                        <label>站点名称：</label>
+                                        <input id="site-name-input" type="text" style="width:220px;">
+                                    </div>
+                                    <div style="margin-bottom:1.5rem;">
+                                        <label>主题：</label>
+                                        <select id="theme-select" style="width:220px;">
+                                            <option value="light">浅色</option>
+                                            <option value="dark">深色</option>
+                                        </select>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        <button class="btn-primary" id="save-settings-btn">保存设置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html> 
